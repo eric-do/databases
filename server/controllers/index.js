@@ -3,9 +3,14 @@ var db = require('../db');
 
 module.exports = {
   messages: {
-    get: function (req, res) {}, // a function which handles a get request for all messages
+    get: function (req, res) {
+      models.messages.get((err, data) => {
+        res.writeHead(200);
+        res.write(JSON.stringify(data));
+        res.end();
+      });
+    }, // a function which handles a get request for all messages
     post: function (req, res) {
-      console.log('hi messages');
       db.addMessage(req.body, (err, data) => {
         res.end();
       });
@@ -23,4 +28,5 @@ module.exports = {
     }
   }
 };
+
 
