@@ -21,7 +21,7 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res, callback) {
-      models.users.get(req, (err, data) => {
+      models.users.get((err, data) => {
         if (err) { console.log(err); }
         res.writeHead(200);
         res.write(JSON.stringify(data));

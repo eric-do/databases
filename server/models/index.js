@@ -18,7 +18,7 @@ module.exports = {
 
   users: {
     // Ditto as above.
-    get: function () {
+    get: function (callback) {
       db.getAllUsers((err, data) => {
         if (err) { return callback(err); }
         callback(null, data);
