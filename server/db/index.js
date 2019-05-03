@@ -82,16 +82,16 @@ module.exports = {
     // Return: nothing
     // Query the database from all users
     // Run callback function on data 
-    db.query(`SELECT * from messages`, (err, data) => {
+    db.query(`SELECT * FROM messages`, (err, data) => {
       if (err) { return callback(new Error('[mySQL error] error querying for all messages')); }
       callback(null, data);
     });
+  },
+
+  getAllUsers: (callback) => {
+    db.query(`SELECT * FROM users`, (err, data) => {
+      if (err) { throw new Error ('[mysql error] errir querying for all users'); }
+      callback(null, data);
+    })
   }
-
 }
-
-
-
-
-/* Functions */
-//dbConnection.query('SELECT * FROM users', done);

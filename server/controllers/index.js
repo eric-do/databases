@@ -5,13 +5,14 @@ module.exports = {
   messages: {
     get: function (req, res) {
       models.messages.get((err, data) => {
+        if (err) { console.log(err); }
         res.writeHead(200);
         res.write(JSON.stringify(data));
         res.end();
       });
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      db.addMessage(req.body, (err, data) => {
+      models.messages.post(req, (err, data) => {
         res.end();
       });
     } // a function which handles posting a message to the database
@@ -19,12 +20,19 @@ module.exports = {
   
   users: {
     // Ditto as above
-    get: function (req, res) {},
-    post: function (req, res) {
-      db.addUser(req.body.username, (err, data) => {
+    get: function (req, res, callback) {
+      models.users.get(req, (err, data) => {
+        if (err) { console.log(err); }
+        res.writeHead(200);
+        res.write(JSON.stringify(data));
         res.end();
       });
-
+    },
+    post: function (req, res) {
+      models.users.post(req, (err, data) => {
+        if (err) { console.log(err); }
+        res.end();
+      });
     }
   }
 };
