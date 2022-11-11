@@ -29,6 +29,6 @@
     "@babel/register": "^7.12.10",
     "chai": "4.2.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
-    "mocha": "^8.2.1"
+    "mocha": "^10.1.0"
   }
 }
